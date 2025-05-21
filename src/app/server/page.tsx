@@ -9,11 +9,10 @@ export default async function ServerComponent() {
 
 
     try {
-        const resp = await fetch('https://api.sampleapis.com/playstation/games/?limit=12');
+        const resp = await fetch('https://api.sampleapis.com/playstation/games');
         const json = await resp.json();
         data = json;
-        console.log(data)
-    } catch (err) {
+    } catch ({err}: any) {
         console.log(err.message)
     }
 

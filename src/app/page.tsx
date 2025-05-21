@@ -36,7 +36,7 @@ export default function Home({ name, games }: data) {
           </Typography>
           <Box>
             <Typography variant="h4">
-              Games
+              PS4 Games
             </Typography>
 
             {games.map(g => (
