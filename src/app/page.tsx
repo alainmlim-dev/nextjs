@@ -1,47 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
-
-const centerVh = {
-  display: "flex",
-  margin: "auto",
-  justifyContent: "center",
-  alignItems: "center",
-  border: "1px solid cyan",
-  padding: "32px"
-}
+import { Container, Typography } from '@mui/material'
 
 export default function Home() {
 
-  const [inputVal, setInputVal] = useState("")
-  const { push } = useRouter()
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    console.log("Clicked")
-    push('/prediction/' + inputVal.toLowerCase())
-  }
-
   return (
-    <>
-      <h1 style={{ fontSize: "5rem", textAlign: "center" }}>NextJS Project</h1>
-      <div style={centerVh}>
-        <form style={{ display: "flex", flexDirection: "column", maxWidth: "600px" }} onSubmit={handleSubmit}>
-
-          <input 
-            type="text" 
-            placeholder="Type name here..." 
-            style={{ border: "1px solid red" }}
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-          ></input>
-
-          <button style={{ marginTop: "16px", cursor: "pointer" }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Predict Data
-          </button>
-        </form>
-      </div>
-    </>
+    <Container>
+      <Typography variant='h1' sx={{textAlign: "center", m: 4}}>
+        Client Component
+      </Typography>
+    </Container>
   );
 }
