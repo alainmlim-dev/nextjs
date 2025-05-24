@@ -5,15 +5,34 @@ const axios = require('axios');
 export default async function ServerComponent() {
 
     const name = "Alain Lim";
-    let data = []
+    let data: Array<object> = []
+    let loadingState =  true
+
+    const preRenderList = (jsonData: Array<object>) => {
+
+        console.log("jsonData", jsonData)
+        loadingState = false
+
+        return (
+            <>
+                {jsonData.map(g => (
+                    <Typography key={g.id} variant="body1">
+                        {g.name} | {g.genre.join(',')}
+                    </Typography>
+                ))}
+            </>
+
+        )
+
+    }
 
 
     try {
         const resp = await fetch('https://api.sampleapis.com/playstation/games');
         const json = await resp.json();
         data = json;
-    } catch ({err}: any) {
-        console.log(err.message)
+    } catch ({ err }: any) {
+        console.log(err)
     }
 
 
@@ -23,7 +42,7 @@ export default async function ServerComponent() {
                 Server Component
             </Typography>
 
-            <Home name={name} games={data} />
+            <Home games={preRenderList(data)} loadingState={loadingState} />
         </Container>
     )
 }

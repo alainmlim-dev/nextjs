@@ -5,21 +5,19 @@ import { useEffect, useState } from 'react';
 
 interface data {
   name: string
-  games: object[]
+  games: Array<object>
+  loadingState: boolean
 }
 
-export default function Home({ name, games }: data) {
+export default function Home({ games, loadingState }: data) {
 
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    if (games !== undefined) {
-      if (games.length > 0) {
-        setIsLoading(false)
-      }
-    }
 
-  }, [games])
+    setIsLoading(loadingState)
+
+  }, [loadingState])
 
   return (
     <Container sx={{ border: "1px solid gold" }}>
@@ -32,18 +30,14 @@ export default function Home({ name, games }: data) {
             Client Component
           </Typography>
           <Typography variant='h5' sx={{ textAlign: "center", m: 4 }}>
-            Welcome, {name}!
+            Welcome!
           </Typography>
           <Box>
             <Typography variant="h4">
               PS4 Games
             </Typography>
 
-            {games.map(g => (
-              <Typography key={g.id} variant="body1">
-                {g.name} | {g.genre.join(',')}
-              </Typography>
-            ))}
+            {games}
 
           </Box>
         </Box>
