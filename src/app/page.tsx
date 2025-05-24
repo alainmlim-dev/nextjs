@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 interface data {
   name: string
-  games: Array<object>
+  games: any
   loadingState: boolean
 }
 

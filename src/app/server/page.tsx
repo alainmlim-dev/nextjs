@@ -2,15 +2,21 @@ import { Container, Typography } from '@mui/material'
 import Home from '../page'
 const axios = require('axios');
 
+interface gameData {
+    id: number;
+    name: string;
+    genre: Array<string>
+}
+
+let data: Array<gameData>
+
 export default async function ServerComponent() {
 
     const name = "Alain Lim";
-    let data: Array<object> = []
     let loadingState =  true
 
-    const preRenderList = (jsonData: Array<object>) => {
+    const preRenderList = (jsonData: Array<gameData>) => {
 
-        console.log("jsonData", jsonData)
         loadingState = false
 
         return (
