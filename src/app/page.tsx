@@ -23,7 +23,9 @@ export default function Home({ games, loadingState }: data) {
     <Container sx={{ border: "1px solid gold" }}>
 
       {isLoading ?
-        <Skeleton variant="rectangular" height={118} />
+        <Typography variant="h4">
+          Loading...
+        </Typography>
         :
         <Box>
           <Typography variant='h1' sx={{ textAlign: "center", m: 4 }}>

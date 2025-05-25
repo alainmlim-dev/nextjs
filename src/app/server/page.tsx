@@ -1,6 +1,5 @@
 import { Container, Typography } from '@mui/material'
 import Home from '../page'
-const axios = require('axios');
 
 interface gameData {
     id: number;
@@ -18,12 +17,13 @@ export default async function ServerComponent() {
     const preRenderList = (jsonData: Array<gameData>) => {
 
         loadingState = false
+        console.log(jsonData)
 
         return (
             <>
                 {jsonData.map(g => (
                     <Typography key={g.id} variant="body1">
-                        {g.name} | {g.genre.join(',')}
+                        {g.name} 
                     </Typography>
                 ))}
             </>
@@ -34,7 +34,10 @@ export default async function ServerComponent() {
 
 
     try {
-        const resp = await fetch('https://api.sampleapis.com/playstation/games');
+        // https://api.sampleapis.com/playstation/games
+        const resp = await fetch('http://localhost:3000/api/users', {
+            method: "GET"
+        });
         const json = await resp.json();
         data = json;
     } catch ({ err }: any) {
