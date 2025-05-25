@@ -11,30 +11,7 @@ let data: Array<gameData>
 
 export default async function ServerComponent() {
 
-    const name = "Alain Lim";
-    let loadingState =  true
-
-    const preRenderList = (jsonData: Array<gameData>) => {
-
-        loadingState = false
-        console.log(jsonData)
-
-        return (
-            <>
-                {jsonData.map(g => (
-                    <Typography key={g.id} variant="body1">
-                        {g.name} 
-                    </Typography>
-                ))}
-            </>
-
-        )
-
-    }
-
-
     try {
-        // https://api.sampleapis.com/playstation/games
         const resp = await fetch('http://localhost:3000/api/users', {
             method: "GET"
         });
@@ -51,7 +28,7 @@ export default async function ServerComponent() {
                 Server Component
             </Typography>
 
-            <Home games={preRenderList(data)} loadingState={loadingState} />
+            <Home userData={data} />
         </Container>
     )
 }
