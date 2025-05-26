@@ -1,7 +1,4 @@
-import { NextRequest } from "next/server";
-import users from '../../../users.json'
-
-const users_xx = [
+[
   {
     "id": 1,
     "name": "Alain Lim",
@@ -233,21 +230,3 @@ const users_xx = [
     }
   }
 ]
-
-export async function GET(request: Request) {
-  // For example, fetch data from your DB here
-
-  return new Response(JSON.stringify(users), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
-}
-
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> },
-) {
-  const id = (await params).id;
-  // e.g. Delete user with ID `id` in DB
-  return new Response(null, { status: 204 });
-}

@@ -1,9 +1,13 @@
 import { Typography } from "@mui/material";
 import { Suspense } from "react";
 
+const apiPath: string = process.env.DB_API as string;
+
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
 
-    const data = await fetch('https://jsonplaceholder.typicode.com/users')
+    const data = await fetch(apiPath + 'api/users')
     const users = await data.json()
 
     return (
