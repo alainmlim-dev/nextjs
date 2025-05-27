@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 const apiPath: string = process.env.DB_API as string;
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; // For build error with self-pointing APIs
 
 export default async function Page() {
 

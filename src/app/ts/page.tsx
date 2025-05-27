@@ -62,6 +62,8 @@ export default function Typescript() {
     singleObj = { id: 1, name: "Aian"} // Correct
     // singleObj = { id: 1, name: true} // Incorrect
 
+    
+
 
 
     return (
