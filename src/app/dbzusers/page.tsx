@@ -1,11 +1,11 @@
-import { Box, Container, Typography } from "@mui/material";
-
-
+import { Box, Container, Typography, Divider, Button } from "@mui/material";
+import AddButton from "./AddButton";
+import AddUser from "./AddUser";
 
 
 export default async function MongoUsers() {
 
-    const resp = await fetch('http://localhost:3000/api/mongousers', {
+    const resp = await fetch('http://localhost:3000/api/dbzusers', {
         method: "GET"
     });
     const json = await resp.json();
@@ -18,15 +18,19 @@ export default async function MongoUsers() {
         <Container maxWidth={"xl"} sx={{ h: 4, bgcolor: "cyan" }}>
 
             <Typography variant="h1">
-                Mongo Users
+                DBZ Users
             </Typography>
 
-            <Box sx={{ bgcolor: "white" }}>
+            <Divider />
+            <AddUser />
+            <Divider />
+
+            <Box sx={{ bgcolor: "white", mt: 3 }}>
                 <table style={{ border: "1px solid gray", width: "100%" }}>
                     <thead style={{ border: "1px solid gray" }}>
                         <th>Name</th>
-                        <th>Username</th>
-                        <th>Date Added</th>
+                        <th>Planet</th>
+                        <th>Spouse</th>
                     </thead>
                     <tbody>
 
@@ -35,9 +39,9 @@ export default async function MongoUsers() {
                                 {
                                     users.map((u: any) => (
                                         <tr key={u.id} style={{ border: "1px solid gray" }}>
-                                            <td style={{ border: "1px solid gray" }}>{u.firstname} {u.lastname}</td>
-                                            <td style={{ border: "1px solid gray" }}>{u.email}</td>
-                                            <td style={{ border: "1px solid gray" }}>{u.role}</td>
+                                            <td style={{ border: "1px solid gray" }}>{u.name}</td>
+                                            <td style={{ border: "1px solid gray" }}>{u.planet}</td>
+                                            <td style={{ border: "1px solid gray" }}>{u.spouse}</td>
                                         </tr>
                                     ))
                                 }
@@ -49,7 +53,7 @@ export default async function MongoUsers() {
                                 </Typography>
                             </>
                         }
-                        
+
                     </tbody>
                 </table>
             </Box>

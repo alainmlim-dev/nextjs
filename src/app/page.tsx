@@ -1,6 +1,6 @@
 
 
-import { Container, Typography, Box, Skeleton } from '@mui/material'
+import { Container, Typography, Box } from '@mui/material'
 import Link from 'next/link';
 
 export default function Home() {
@@ -11,12 +11,18 @@ export default function Home() {
         Main App - Next.JS
       </Typography>
 
+      
+
       <Box sx={{fontSize: "2rem", color: "blue", textDecoration: "underline"}}>
         <Link href="/users">Users</Link>
       </Box>
 
       <Box sx={{fontSize: "2rem", color: "blue", textDecoration: "underline"}}>
         <Link href="/mongousers">Mongo Users</Link>
+      </Box>
+
+      <Box sx={{fontSize: "2rem", color: "blue", textDecoration: "underline"}}>
+        <Link href="/dbzusers">DBZ Users</Link>
       </Box>
 
     </Container>
