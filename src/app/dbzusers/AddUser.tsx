@@ -34,10 +34,6 @@ const AddUser = () => {
         })
     }
 
-    useEffect(() => {
-        console.log(inputData)
-    }, [inputData])
-
     return (
         <>
             <Box sx={{ display: "flex", flexDirection: "column", bgcolor: "white" }}>

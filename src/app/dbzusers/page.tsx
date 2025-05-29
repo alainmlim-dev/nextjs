@@ -11,7 +11,6 @@ export default async function MongoUsers() {
     const data = json;
     const users = data.users
 
-
     return (
 
         <Container maxWidth={"xl"} sx={{ h: 4, bgcolor: "cyan" }}>
