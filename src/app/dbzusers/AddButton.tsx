@@ -1,9 +1,12 @@
 "use client"
 
 import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 
-const AddButton = ({userData}: any) => {
+const AddButton = ({ userData }: any) => {
+
+    const { push } = useRouter();
 
     const handleAddUser = async () => {
 
@@ -19,6 +22,8 @@ const AddButton = ({userData}: any) => {
         const json = await resp.json();
         const data = json;
         console.log(data)
+
+        push('/dbzusers')
 
     }
 

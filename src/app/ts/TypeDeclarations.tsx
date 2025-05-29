@@ -1,6 +1,6 @@
 // Basic types
 let age: number = 30;
-let name: string = "John Doe";
+let name1: string = "John Doe";
 let isEmployed: boolean = true;
 let unknownValue: any = "can be anything";
 
@@ -25,7 +25,7 @@ let item: Product = { id: 1, name: "Laptop", price: 1200 };
 
 // Type alias
 type Point = { x: number; y: number };
-let origin: Point = { x: 0, y: 0 };
+let origin1: Point = { x: 0, y: 0 };
 
 // Enum
 enum Status {
