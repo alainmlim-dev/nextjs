@@ -15,15 +15,25 @@ export async function POST(request) {
     try {
 
         const data = await request.json();
-        console.log('POST log', data)
-
-        const date = new Date()
-        console.log(String(date))
-
         await connectMongoDB();
         await DbzUser.create(data);
-
         return NextResponse.json({ message: 'DBZ User added.' }, { status: 201 })
+
+    } catch (error) {
+        console.log(error)
+        throw new Error("Database error.");
+    }
+
+}
+
+export async function DELETE(request) {
+
+    try {
+
+        const id = await request.json();
+        await connectMongoDB();
+        await DbzUser.deleteOne({ _id: id })
+        return NextResponse.json({ message: 'DBZ User deleted.' }, { status: 201 })
 
     } catch (error) {
         console.log(error)

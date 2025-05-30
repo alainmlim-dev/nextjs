@@ -1,5 +1,6 @@
 import { Box, Container, Typography, Divider } from "@mui/material";
 import AddUser from "./AddUser";
+import DbzUsersTable from "./DbzUsersTable";
 
 
 export default async function MongoUsers() {
@@ -10,6 +11,7 @@ export default async function MongoUsers() {
     const json = await resp.json();
     const data = json;
     const users = data.users
+    
 
     return (
 
@@ -23,41 +25,10 @@ export default async function MongoUsers() {
             <AddUser />
             <Divider />
 
-            <Box sx={{ bgcolor: "white", mt: 3 }}>
-                <table style={{ border: "1px solid gray", width: "100%" }}>
-                    <thead style={{ border: "1px solid gray" }}>
-                        <th>Name</th>
-                        <th>Planet</th>
-                        <th>Spouse</th>
-                    </thead>
-                    <tbody>
-
-                        {users ?
-                            <>
-                                {
-                                    users.map((u: any) => (
-                                        <tr key={u.id} style={{ border: "1px solid gray" }}>
-                                            <td style={{ border: "1px solid gray" }}>{u.name}</td>
-                                            <td style={{ border: "1px solid gray" }}>{u.planet}</td>
-                                            <td style={{ border: "1px solid gray" }}>{u.spouse}</td>
-                                        </tr>
-                                    ))
-                                }
-                            </>
-                            :
-                            <>
-                                <Typography>
-                                    Loading...
-                                </Typography>
-                            </>
-                        }
-
-                    </tbody>
-                </table>
-            </Box>
+            {users ? <DbzUsersTable users={users} /> : <></>}
 
 
-        </Container>
+        </Container >
 
     )
 

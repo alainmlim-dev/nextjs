@@ -10,8 +10,6 @@ const AddButton = ({ userData }: any) => {
 
     const handleAddUser = async () => {
 
-        console.log('AddButton', userData)
-
         const resp = await fetch('http://localhost:3000/api/dbzusers', {
             method: "POST",
             headers: {
@@ -21,8 +19,6 @@ const AddButton = ({ userData }: any) => {
         });
         const json = await resp.json();
         const data = json;
-        console.log(data)
-
         push('/dbzusers')
 
     }
