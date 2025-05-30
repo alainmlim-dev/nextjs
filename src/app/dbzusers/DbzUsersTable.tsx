@@ -29,9 +29,8 @@ const DbzUsersTable = ({ users }: any) => {
         setModalOpen(true)
     }
 
+    // Delete fetch function
     const handleDeleteUser = async () => {
-
-        console.log('handleDeleteUser')
 
         const resp = await fetch('http://localhost:3000/api/dbzusers', {
             method: "DELETE",
@@ -41,9 +40,15 @@ const DbzUsersTable = ({ users }: any) => {
             body: JSON.stringify(deleteUserInfo._id)
         });
         const json = await resp.json();
-        const data = json;
+        const data = json; // For showing response data - not used in this example
         setModalOpen(false)
-        push('/dbzusers')
+        push('/dbzusers') // useRouter navigation
+
+    }
+
+    const handleViewUser = (userid: any) => {
+
+        push(`/dbzuser/?id=${userid._id}`)
 
     }
 
@@ -56,7 +61,7 @@ const DbzUsersTable = ({ users }: any) => {
                             <th>Name</th>
                             <th>Planet</th>
                             <th>Spouse</th>
-                            <th>Actions</th>
+                            <th colSpan={2}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +74,14 @@ const DbzUsersTable = ({ users }: any) => {
                                             <td style={{ border: "1px solid gray" }}>{u.name}</td>
                                             <td style={{ border: "1px solid gray" }}>{u.planet}</td>
                                             <td style={{ border: "1px solid gray" }}>{u.spouse}</td>
+
+                                            <td
+                                                style={{ border: "1px solid gray", textAlign: "center" }}
+                                                onClick={() => handleViewUser(u)}
+                                            >
+                                                <span style={{ cursor: "pointer", color: "blue" }}>View</span>
+                                            </td>
+
                                             <td
                                                 style={{ border: "1px solid gray", textAlign: "center" }}
                                                 onClick={() => handleConfirmDeleteUser(u)}

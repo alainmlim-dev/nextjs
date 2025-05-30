@@ -11,7 +11,7 @@ export default async function MongoUsers() {
     const json = await resp.json();
     const data = json;
     const users = data.users
-    
+
 
     return (
 
@@ -33,3 +33,4 @@ export default async function MongoUsers() {
     )
 
 }
+
