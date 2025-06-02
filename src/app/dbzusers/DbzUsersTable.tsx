@@ -47,9 +47,7 @@ const DbzUsersTable = ({ users }: any) => {
     }
 
     const handleViewUser = (userid: any) => {
-
-        push(`/dbzuser/?id=${userid._id}`)
-
+        push('/dbzuser/' + userid._id)
     }
 
     return (
