@@ -50,6 +50,10 @@ const DbzUsersTable = ({ users }: any) => {
         push('/dbzuser/' + userid._id)
     }
 
+    const handleEditUser = (userid: any) => {
+        push('/dbzuser/edit/' + userid._id)
+    }
+
     return (
         <>
             <Box sx={{ bgcolor: "white", mt: 3 }}>
@@ -59,7 +63,7 @@ const DbzUsersTable = ({ users }: any) => {
                             <th>Name</th>
                             <th>Planet</th>
                             <th>Spouse</th>
-                            <th colSpan={2}>Actions</th>
+                            <th colSpan={3}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +82,13 @@ const DbzUsersTable = ({ users }: any) => {
                                                 onClick={() => handleViewUser(u)}
                                             >
                                                 <span style={{ cursor: "pointer", color: "blue" }}>View</span>
+                                            </td>
+
+                                            <td
+                                                style={{ border: "1px solid gray", textAlign: "center" }}
+                                                onClick={() => handleEditUser(u)}
+                                            >
+                                                <span style={{ cursor: "pointer", color: "blue" }}>Edit</span>
                                             </td>
 
                                             <td

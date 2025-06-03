@@ -1,6 +1,7 @@
 // src/app/dbzuser/[userid]/page.tsx
 
-import { Typography, Box, Container, Divider } from "@mui/material";
+import { Typography, Box, Container, Divider, FormControl, InputLabel, Input, FormHelperText } from "@mui/material";
+import EditForm from "./EditForm";
 
 export default async function ViewUser({ params }: { params: Promise<{ userid: string }> }) {
 
@@ -27,14 +28,7 @@ export default async function ViewUser({ params }: { params: Promise<{ userid: s
                 <Divider sx={{ pt: 4, mb: 4 }} />
 
                 {user ?
-                    <Box>
-                        <Typography variant="h4">
-                            <strong>User ID:</strong> {userid} <br />
-                            <strong>Name:</strong> {user.name} <br />
-                            <strong>Planet:</strong> {user.planet} <br />
-                            <strong>Spouse:</strong> {user.spouse}
-                        </Typography>
-                    </Box>
+                    <EditForm userInfo={user} />
                     :
                     <Typography variant="body1">
                         Loading user data...
