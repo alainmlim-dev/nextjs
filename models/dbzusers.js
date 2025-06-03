@@ -9,6 +9,6 @@ const dbzUserSchema = new Schema(
     }
 )
 
-const DbzUser = mongoose.models.dbzUserSchema || mongoose.model("User", dbzUserSchema);
+const DbzUser = mongoose.models.User || mongoose.model("User", dbzUserSchema);
 
 export default DbzUser

@@ -5,13 +5,17 @@ export default async function ViewUser({ params }: { params: Promise<{ userid: s
 
     const userid = (await params).userid;
 
-    const resp = await fetch('http://localhost:3000/api/alain', {
-        method: "GET"
+    const resp = await fetch('http://localhost:3000/api/dbzusers/' + userid, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "userid": userid
+        }
     });
     const json = await resp.json();
     const data = json;
-    const users = data.users
-    console.log(data)
+    const user = data.user
+    console.log(user)
 
     return (
         <>
@@ -19,9 +23,19 @@ export default async function ViewUser({ params }: { params: Promise<{ userid: s
                 User information
             </Typography>
 
-            <Typography variant="body1">
-                User ID: {userid}
-            </Typography>
+            {user ?
+                <Typography variant="body1">
+                    User ID: {userid} <br />
+                    Name: {user.name} <br />
+                    Planet: {user.planet} <br />
+                    Spouse: {user.spouse}
+                </Typography>
+                :
+                <Typography variant="body1">
+                    Loading user data...
+                </Typography>}
+
+
         </>
     )
 }
